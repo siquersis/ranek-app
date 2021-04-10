@@ -13,11 +13,24 @@
 <script>
 import TheHeader from "@/components/TheHeader.vue";
 import TheFooter from "@/components/TheFooter.vue";
+import { api } from "@/services.js";
 
 export default {
   components: {
     TheHeader,
     TheFooter,
+  },
+  created() {
+    if (window.localStorage.token) {
+      api
+        .validateToken()
+        .then(() => {
+          this.$store.dispatch("getUsuario");
+        })
+        .catch(() => {
+          window.localStorage.removeItem("token");
+        });
+    }
   },
 };
 </script>
@@ -77,6 +90,12 @@ img {
   transform: scale(1.1);
 }
 
+.btn-disabled,
+.btn-disabled:hover {
+  background: #bbc;
+  transform: scale(1);
+}
+
 #app {
   display: flex;
   min-height: 100vh;
@@ -85,6 +104,10 @@ img {
 
 #main {
   flex: 1;
+}
+
+label {
+  margin-bottom: 5px;
 }
 
 input,
@@ -97,6 +120,7 @@ textarea {
   font-size: 1rem;
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   margin-bottom: 15px;
+  width: 100%;
 }
 
 input:hover,
@@ -123,6 +147,6 @@ textarea:focus {
 
 .v-enter-active,
 .v-leave-active {
-  transition: all 0.7s;
+  transition: all 0.3s;
 }
 </style>

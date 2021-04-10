@@ -4,13 +4,12 @@
     <span></span>
     <span></span>
     <span></span>
-    <span></span>
   </div>
 </template>
 
 <script>
 export default {
-  name: "PaginaCarregando",
+  name: "PaginaCarregando"
 };
 </script>
 

@@ -1,11 +1,9 @@
 <template>
-  <div>
-    <section>
-      <h1>👍 Compre ou Venda 👎</h1>
-      <ProdutosBuscar />
-      <ProdutosLista />
-    </section>
-  </div>
+  <section>
+    <h1>👍 Compre ou Venda 👎</h1>
+    <ProdutosBuscar />
+    <ProdutosLista />
+  </section>
 </template>
 
 <script>
@@ -17,6 +15,9 @@ export default {
   components: {
     ProdutosBuscar,
     ProdutosLista,
+  },
+  created() {
+    document.title = "Login";
   },
 };
 </script>

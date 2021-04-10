@@ -1,21 +1,19 @@
 <template>
-  <div>
-    <form>
-      <input
-        placeholder="Buscar..."
-        name="busca"
-        id="busca"
-        v-model="busca"
-        type="text"
-      />
-      <input
-        type="submit"
-        id="lupa"
-        value="Buscar"
-        @click.prevent="buscarProduto"
-      />
-    </form>
-  </div>
+  <form>
+    <input
+      name="busca"
+      id="busca"
+      type="text"
+      v-model="busca"
+      placeholder="Buscar..."
+    />
+    <input
+      type="submit"
+      id="lupa"
+      value="Buscar"
+      @click.prevent="buscarProdutos"
+    />
+  </form>
 </template>
 
 <script>
@@ -26,17 +24,19 @@ export default {
     };
   },
   methods: {
-    buscarProduto() {
+    buscarProdutos() {
       this.$router.push({ query: { q: this.busca } });
     },
   },
 };
 </script>
+
 <style scoped>
 form {
   max-width: 600px;
   margin: 30px auto 60px auto;
   position: relative;
+  padding: 0 10px;
 }
 
 #busca {
